@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Huda & Shelena</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f1ea;
+            color: #333333;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95));
+            border-bottom: 2px dashed #d4af37;
+        }
+
+        .hero h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: #8c763d;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
+            color: #8c763d;
+            margin: 15px 0;
+            font-weight: 400;
+        }
+
+        .hero p.date {
+            font-family: 'Cinzel', serif;
+            font-size: 15px;
+            letter-spacing: 2px;
+            color: #555555;
+            margin-top: 15px;
+        }
+
+        /* Bride & Groom Section */
+        .couple-section {
+            padding: 50px 30px;
+            text-align: center;
+            background-color: #fdfbf7;
+        }
+
+        .couple-section p.intro {
+            font-size: 13px;
+            font-style: italic;
+            color: #777777;
+            margin-bottom: 40px;
+        }
+
+        .profile-card {
+            margin-bottom: 40px;
+        }
+
+        .profile-card h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 38px;
+            color: #8c763d;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+
+        .profile-card p.fullname {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 8px;
+        }
+
+        .profile-card p.parents {
+            font-size: 13px;
+            color: #666666;
+            line-height: 1.5;
+        }
+
+        .ampersand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 45px;
+            color: #d4af37;
+            margin: 20px 0;
+        }
+
+        /* Event Details Section */
+        .event-section {
+            padding: 50px 30px;
+            text-align: center;
+            background-color: #ffffff;
+            border-top: 1px solid #eee;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            color: #8c763d;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 1px;
+            background-color: #d4af37;
+        }
+
+        .info-block {
+            margin-bottom: 30px;
+            background-color: #faf8f5;
+            padding: 25px 20px;
+            border-radius: 8px;
+            border: 1px solid #f0ece3;
+        }
+
+        .info-block h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: #8c763d;
+            margin-bottom: 10px;
+        }
+
+        .info-block p {
+            font-size: 14px;
+            color: #444444;
+        }
+
+        /* Map Button */
+        .btn-maps {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #8c763d;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            border-radius: 25px;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(140, 118, 61, 0.2);
+        }
+
+        .btn-maps:hover {
+            background-color: #736031;
+        }
+
+        /* Wedding Gift Section */
+        .gift-section {
+            padding: 50px 30px;
+            text-align: center;
+            background-color: #faf8f5;
+            border-top: 1px solid #eee;
+        }
+
+        .gift-card {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #ebdcb9;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            margin-top: 20px;
+        }
+
+        .bank-name {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0066ae; /* BCA Brand color accent safely styled */
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .account-number {
+            font-size: 20px;
+            font-weight: 600;
+            color: #222222;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            user-select: all;
+        }
+
+        .account-name {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 15px;
+        }
+
+        .btn-copy {
+            background: none;
+            border: 1px solid #8c763d;
+            color: #8c763d;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .btn-copy:hover {
+            background-color: #8c763d;
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #333333;
+            color: #ffffff;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <h3>The Wedding Of</h3>
+            <h1>Huda & Shelena</h1>
+            <p class="date">26 Juni 2026</p>
+        </section>
+
+        <!-- Couple Section -->
+        <section class="couple-section">
+            <p class="intro">Melalui pesan ini, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:</p>
+            
+            <!-- Groom -->
+            <div class="profile-card">
+                <h2>Miftahul Huda</h2>
+                <p class="fullname">Miftahul Huda</p>
+                <p class="parents">Anak pertama dari Bapak Suroso<br>& Ibu Rohmatul Chasanah</p>
+            </div>
+
+            <div class="ampersand">&</div>
+
+            <!-- Bride -->
+            <div class="profile-card">
+                <h2>Shelena Febriani</h2>
+                <p class="fullname">Shelena Febriani</p>
+                <p class="parents">Anak pertama dari Bapak Alexia Filemon<br>& Ibu Purnama Wati</p>
+            </div>
+        </section>
+
+        <!-- Event Section -->
+        <section class="event-section">
+            <h3 class="section-title">Waktu & Tempat Acara</h3>
+            
+            <div class="info-block">
+                <h4>Tanggal</h4>
+                <p>Jumat, 26 Juni 2026</p>
+            </div>
+
+            <div class="info-block">
+                <h4>Jam</h4>
+                <p>13.00 WITA - Selesai</p>
+            </div>
+
+            <div class="info-block">
+                <h4>Lokasi Acara</h4>
+                <p>Jl. Pangeran Suryanata, Perum Bukit Pinang, Blok C1 No. 52</p>
+                <br>
+                <a href="https://maps.google.com/?q=Perum+Bukit+Pinang+Blok+C1+No+52" target="_blank" class="btn-maps">Buka Google Maps</a>
+            </div>
+        </section>
+
+        <!-- Gift Section -->
+        <section class="gift-section">
+            <h3 class="section-title">Wedding Gift</h3>
+            <p style="font-size: 13px; color: #666666;">Bagi keluarga dan kerabat yang ingin memberikan tanda kasih, dapat melalui rekening berikut:</p>
+            
+            <div class="gift-card">
+                <div class="bank-name">BCA</div>
+                <div class="account-number" id="accNum">6595314252</div>
+                <div class="account-name">A/N Pernikahan Huda & Shelena</div>
+                <button class="btn-copy" onclick="copyToClipboard()">Salin No. Rekening</button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Huda & Shelena Wedding. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            var text = document.getElementById("accNum").innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                alert("Nomor rekening berhasil disalin!");
+            }, function(err) {
+                alert("Gagal menyalin nomor rekening.");
+            });
+        }
+    </script>
+
+</body>
+</html>
