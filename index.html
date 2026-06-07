@@ -36,7 +36,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease-in-out;
             text-align: center;
             padding: 20px;
         }
@@ -174,6 +174,7 @@
             letter-spacing: 2px;
             color: #b09b67;
             margin-bottom: 25px;
+            text-transform: uppercase;
         }
 
         .profile-card h2 {
@@ -194,6 +195,7 @@
             font-size: 12px;
             color: #999999;
             margin-top: 5px;
+            line-height: 1.7;
         }
 
         .ampersand {
@@ -203,25 +205,50 @@
             margin: 15px 0;
         }
 
+        /* Info Waktu & Lokasi Acara */
+        .event-section {
+            padding: 50px 24px;
+            text-align: center;
+        }
+
+        .event-card {
+            background-color: #1a1a1a;
+            padding: 25px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(176, 155, 103, 0.2);
+            margin-top: 15px;
+        }
+
+        .event-date {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .event-time {
+            font-size: 14px;
+            color: #b09b67;
+            margin-bottom: 15px;
+        }
+
+        .event-address {
+            font-size: 13px;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
         /* Form Konfirmasi Kehadiran (RSVP) */
         .rsvp-section {
             padding: 50px 24px;
             text-align: center;
         }
 
-        .rsvp-section .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 20px;
-            letter-spacing: 1.5px;
-            color: #b09b67;
-            margin-bottom: 20px;
-        }
-
         .rsvp-desc {
             font-size: 13.5px;
             color: #8c8c8c;
             margin-bottom: 25px;
-            padding: 0 10px;
         }
 
         .rsvp-card {
@@ -239,7 +266,6 @@
         .form-group label {
             display: block;
             font-size: 14px;
-            font-weight: 400;
             margin-bottom: 10px;
             color: #cccccc;
         }
@@ -265,10 +291,6 @@
             padding-right: 30px;
         }
 
-        .form-group input::placeholder {
-            color: #888888;
-        }
-
         .btn-whatsapp {
             display: block;
             width: auto;
@@ -282,7 +304,6 @@
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
-            text-align: center;
             transition: background-color 0.3s;
         }
 
@@ -345,18 +366,31 @@
             <div class="profile-card">
                 <h2>Miftahul Huda</h2>
                 <p class="fullname">Miftahul Huda</p>
-                <p class="parents">Anak pertama dari Bapak Suroso<br>& Ibu Rohmatul Chasanah</p>
+                <p class="parents">Anak pertama dari Bpk. Suroso<br>& Ibu Rohmatul Chasanah</p>
             </div>
             <div class="ampersand">&</div>
             <div class="profile-card">
                 <h2>Shelena Febriani</h2>
                 <p class="fullname">Shelena Febriani</p>
-                <p class="parents">Anak pertama dari Bapak Alexia Filemon<br>& Ibu Purnama Wati</p>
+                <p class="parents">Anak pertama dari Bpk. Alexia Filemon<br>& Ibu dari Purnama Wati</p>
+            </div>
+        </section>
+
+        <section class="event-section">
+            <h3 class="section-title">Waktu & Lokasi Acara</h3>
+            <div class="event-card">
+                <div class="event-date">Jumat, 26 Juni 2026</div>
+                <div class="event-time">Jam 13.00 - Selesai</div>
+                <div style="width: 40px; height: 1px; background-color: #b09b67; margin: 15px auto;"></div>
+                <div class="event-address">
+                    <strong>Lokasi Pernikahan:</strong><br>
+                    Jln. Pangeran Suryanata, Perum Bukit Pinang, Blok C1 No. 52
+                </div>
             </div>
         </section>
 
         <section class="rsvp-section">
-            <h3 class="section-title">Konfirmasi Kehadiran (RSVP)</h3>
+            <h3 class="section-title">Konfirmasi Kehadiran</h3>
             <p class="rsvp-desc">Mohon konfirmasikan kehadiran Anda melalui form di bawah ini:</p>
             
             <div class="rsvp-card">
@@ -406,40 +440,52 @@
     </div>
 
     <script>
-        var music = document.getElementById("weddingMusic");
-        var musicBtn = document.getElementById("musicBtn");
-
         function openInvitation() {
-            // 1. Izinkan halaman untuk di-scroll
+            // Langkah 1: Langsung izinkan scroll tubuh halaman
             document.body.style.overflow = "auto";
             
-            // 2. Hilangkan layar cover utama (slide ke atas)
-            document.getElementById("coverScreen").classList.add("fade-out");
+            // Langkah 2: Langsung eksekusi transisi geser/hilangkan overlay cover pembuka
+            var cover = document.getElementById("coverScreen");
+            if (cover) {
+                cover.classList.add("fade-out");
+            }
             
-            // 3. Tampilkan tombol kontrol musik
-            musicBtn.style.display = "flex";
+            // Langkah 3: Munculkan tombol navigasi kendali musik di pojok bawah
+            var musicBtn = document.getElementById("musicBtn");
+            if (musicBtn) {
+                musicBtn.style.display = "flex";
+            }
 
-            // 4. Coba putar musik dengan penanganan aman (Anti-Crash/Anti-Freeze)
-            try {
-                var playPromise = music.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(function(error) {
-                        console.log("Musik otomatis diblokir oleh kebijakan browser, menunggu ketukan alternatif.");
+            // Langkah 4: Jalankan musik secara terpisah & aman agar jika gagal/di-block browser tidak merusak tombol pembuka
+            setTimeout(function() {
+                var music = document.getElementById("weddingMusic");
+                if (music) {
+                    music.play().catch(function(error) {
+                        console.log("Autoplay musik diblokir browser, pengguna harus memutar manual lewat widget.");
                     });
                 }
-            } catch (e) {
-                console.log("Sistem audio tidak merespon, namun halaman tetap dibuka.");
-            }
+            }, 200);
         }
 
         function toggleMusic() {
-            if (music.paused) { music.play(); musicBtn.innerText = "🎵"; } 
-            else { music.pause(); musicBtn.innerText = "🔇"; }
+            var music = document.getElementById("weddingMusic");
+            var musicBtn = document.getElementById("musicBtn");
+            if (!music) return;
+            
+            if (music.paused) { 
+                music.play(); 
+                musicBtn.innerText = "🎵"; 
+            } else { 
+                music.pause(); 
+                musicBtn.innerText = "🔇"; 
+            }
         }
 
         function copyToClipboard() {
             var text = document.getElementById("accNum").innerText;
-            navigator.clipboard.writeText(text).then(function() { alert("Nomor rekening berhasil disalin!"); });
+            navigator.clipboard.writeText(text).then(function() { 
+                alert("Nomor rekening berhasil disalin!"); 
+            });
         }
 
         function sendRSVP() {
@@ -452,7 +498,7 @@
                 return;
             }
             
-            var phoneNumber = "628123456789"; 
+            var phoneNumber = "6283150415284"; // Otomatis disesuaikan ke nomor WA pengirim di screenshot
             var message = "Halo, saya ingin mengonfirmasi kehadiran untuk pernikahan Huda %26 Shelena.%0A%0A" +
                           "*Nama:* " + encodeURIComponent(name) + "%0A" +
                           "*Status Kehadiran:* " + encodeURIComponent(status) + "%0A" +
