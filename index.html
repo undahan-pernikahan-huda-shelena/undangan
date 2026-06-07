@@ -489,23 +489,26 @@
         }
 
         function sendRSVP() {
-            var name = document.getElementById("rsvpName").value;
-            var status = document.getElementById("rsvpStatus").value;
-            var guests = document.getElementById("rsvpGuests").value;
-            
-            if(!name || !status) {
-                alert("Mohon isi Nama Lengkap dan Status Kehadiran terlebih dahulu.");
-                return;
-            }
-            
-            var phoneNumber = "6283150415284"; // Otomatis disesuaikan ke nomor WA pengirim di screenshot
-            var message = "Halo, saya ingin mengonfirmasi kehadiran untuk pernikahan Huda %26 Shelena.%0A%0A" +
-                          "*Nama:* " + encodeURIComponent(name) + "%0A" +
-                          "*Status Kehadiran:* " + encodeURIComponent(status) + "%0A" +
-                          "*Jumlah Tamu:* " + encodeURIComponent(guests);
-            
-            window.open("https://api.whatsapp.com/send?phone=6283150415284" + phoneNumber + "&text=" + message, "_blank");
-        }
+    var name = document.getElementById("rsvpName").value;
+    var status = document.getElementById("rsvpStatus").value;
+    var guests = document.getElementById("rsvpGuests").value;
+    
+    if(!name || !status) {
+        alert("Mohon isi Nama Lengkap dan Status Kehadiran terlebih dahulu.");
+        return;
+    }
+    
+    // PERBAIKAN: Format nomor tunggal yang valid langsung dengan kode negara 62
+    var phoneNumber = "6283150415284"; 
+    
+    var message = "Halo, saya ingin mengonfirmasi kehadiran untuk pernikahan Huda %26 Shelena.%0A%0A" +
+                  "*Nama:* " + encodeURIComponent(name) + "%0A" +
+                  "*Status Kehadiran:* " + encodeURIComponent(status) + "%0A" +
+                  "*Jumlah Tamu:* " + encodeURIComponent(guests);
+    
+    window.open("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message, "_blank");
+}
+
     </script>
 </body>
 </html>
