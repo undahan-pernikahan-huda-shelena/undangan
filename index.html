@@ -311,7 +311,6 @@
 </head>
 <body>
 
-    <!-- Cover Pembuka -->
     <div class="cover-overlay" id="coverScreen">
         <p class="cover-title-sub">The Wedding Of</p>
         <h1 class="cover-title">Huda & Shelena</h1>
@@ -320,7 +319,6 @@
         <button class="btn-open" onclick="openInvitation()">Buka Undangan</button>
     </div>
 
-    <!-- Pemutar Audio Musik Lokal (Mengarah langsung ke file akad.mp3 di root repositori Anda) -->
     <audio id="weddingMusic" loop preload="auto">
         <source src="akad.mp3" type="audio/mp3">
     </audio>
@@ -335,7 +333,6 @@
             <p style="font-size: 13px; color: #888888; letter-spacing: 1px;">26 Juni 2026</p>
         </section>
 
-        <!-- Bagian Pembuka Ayat -->
         <section class="quran-section">
             <h3>Assalamu’alaikum Wr. Wb.</h3>
             <p style="font-size: 13px; color: #a0a0a0; margin-bottom: 25px; padding: 0 10px;">Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami.</p>
@@ -343,7 +340,6 @@
             <p class="quran-verse">(QS. Ar-Rum: 21)</p>
         </section>
 
-        <!-- Bagian Mempelai -->
         <section class="couple-section">
             <h3 class="section-title">Mempelai</h3>
             <div class="profile-card">
@@ -359,7 +355,6 @@
             </div>
         </section>
 
-        <!-- Bagian RSVP -->
         <section class="rsvp-section">
             <h3 class="section-title">Konfirmasi Kehadiran (RSVP)</h3>
             <p class="rsvp-desc">Mohon konfirmasikan kehadiran Anda melalui form di bawah ini:</p>
@@ -393,7 +388,6 @@
             </div>
         </section>
 
-        <!-- Bagian Kado Digital -->
         <section class="gift-section">
             <h3 class="section-title">Kado Digital</h3>
             <p style="font-size: 13px; color: #8c8c8c; margin-bottom: 15px;">Bagi keluarga dan kerabat yang ingin memberikan tanda kasih, dapat mengirimkannya melalui rekening di bawah ini:</p>
@@ -416,10 +410,26 @@
         var musicBtn = document.getElementById("musicBtn");
 
         function openInvitation() {
+            // 1. Izinkan halaman untuk di-scroll
             document.body.style.overflow = "auto";
+            
+            // 2. Hilangkan layar cover utama (slide ke atas)
             document.getElementById("coverScreen").classList.add("fade-out");
-            music.play().catch(function(e){ console.log("Playback blocked by browser settings", e); });
+            
+            // 3. Tampilkan tombol kontrol musik
             musicBtn.style.display = "flex";
+
+            // 4. Coba putar musik dengan penanganan aman (Anti-Crash/Anti-Freeze)
+            try {
+                var playPromise = music.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(function(error) {
+                        console.log("Musik otomatis diblokir oleh kebijakan browser, menunggu ketukan alternatif.");
+                    });
+                }
+            } catch (e) {
+                console.log("Sistem audio tidak merespon, namun halaman tetap dibuka.");
+            }
         }
 
         function toggleMusic() {
@@ -442,7 +452,7 @@
                 return;
             }
             
-            var phoneNumber = "628123456789"; // Sesuaikan nomor WA panitia/penerima di sini jika perlu
+            var phoneNumber = "628123456789"; 
             var message = "Halo, saya ingin mengonfirmasi kehadiran untuk pernikahan Huda %26 Shelena.%0A%0A" +
                           "*Nama:* " + encodeURIComponent(name) + "%0A" +
                           "*Status Kehadiran:* " + encodeURIComponent(status) + "%0A" +
