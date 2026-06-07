@@ -15,269 +15,344 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #f4f1ea;
-            color: #333333;
-            overflow-x: hidden;
+            background-color: #000000;
+            color: #e0e0e0;
+            overflow: hidden;
             line-height: 1.6;
         }
 
+        /* Cover Screen */
+        .cover-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(0, 0, 0, 0.95)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .cover-overlay.fade-out {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .cover-title-sub {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: #b09b67;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .cover-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 52px;
+            color: #b09b67;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .btn-open {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: #947c4f;
+            color: #ffffff;
+            font-size: 13px;
+            border: none;
+            border-radius: 25px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(148, 124, 79, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            margin-top: 20px;
+        }
+
+        /* Container Utama Handphone (Max 500px) */
         .container {
             max-width: 500px;
             margin: 0 auto;
-            background-color: #ffffff;
+            background-color: #121212;
             min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
             position: relative;
         }
 
-        /* Hero Section */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(148, 124, 79, 0.85);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            font-size: 18px;
+            border: none;
+        }
+
+        /* Setiap Section Separator */
+        section {
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+        }
+
         .hero {
-            padding: 60px 20px;
+            padding: 70px 20px;
             text-align: center;
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95));
-            border-bottom: 2px dashed #d4af37;
         }
 
         .hero h3 {
             font-family: 'Cinzel', serif;
-            font-size: 14px;
+            font-size: 13px;
             letter-spacing: 3px;
-            color: #8c763d;
-            margin-bottom: 20px;
+            color: #b09b67;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
 
         .hero h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 48px;
-            color: #8c763d;
-            margin: 15px 0;
-            font-weight: 400;
+            color: #b09b67;
+            margin: 10px 0;
         }
 
-        .hero p.date {
+        .quran-section {
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .quran-section h3 {
             font-family: 'Cinzel', serif;
-            font-size: 15px;
-            letter-spacing: 2px;
-            color: #555555;
-            margin-top: 15px;
+            color: #b09b67;
+            font-size: 19px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
-        /* Bride & Groom Section */
+        .quran-text {
+            font-size: 13px;
+            font-style: italic;
+            color: #aaaaaa;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .quran-verse {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #b09b67;
+        }
+
         .couple-section {
             padding: 50px 30px;
             text-align: center;
-            background-color: #fdfbf7;
-        }
-
-        .couple-section p.intro {
-            font-size: 13px;
-            font-style: italic;
-            color: #777777;
-            margin-bottom: 40px;
-        }
-
-        .profile-card {
-            margin-bottom: 40px;
-        }
-
-        .profile-card h2 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 38px;
-            color: #8c763d;
-            margin-bottom: 5px;
-            font-weight: 400;
-        }
-
-        .profile-card p.fullname {
-            font-family: 'Cinzel', serif;
-            font-size: 16px;
-            font-weight: 600;
-            color: #333333;
-            margin-bottom: 8px;
-        }
-
-        .profile-card p.parents {
-            font-size: 13px;
-            color: #666666;
-            line-height: 1.5;
-        }
-
-        .ampersand {
-            font-family: 'Great Vibes', cursive;
-            font-size: 45px;
-            color: #d4af37;
-            margin: 20px 0;
-        }
-
-        /* Event Details Section */
-        .event-section {
-            padding: 50px 30px;
-            text-align: center;
-            background-color: #ffffff;
-            border-top: 1px solid #eee;
         }
 
         .section-title {
             font-family: 'Cinzel', serif;
             font-size: 18px;
             letter-spacing: 2px;
-            color: #8c763d;
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 8px;
+            color: #b09b67;
+            margin-bottom: 25px;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 25%;
-            width: 50%;
-            height: 1px;
-            background-color: #d4af37;
+        .profile-card h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 38px;
+            color: #b09b67;
+            margin-bottom: 5px;
         }
 
-        .info-block {
-            margin-bottom: 30px;
-            background-color: #faf8f5;
-            padding: 25px 20px;
-            border-radius: 8px;
-            border: 1px solid #f0ece3;
-        }
-
-        .info-block h4 {
+        .profile-card p.fullname {
             font-family: 'Cinzel', serif;
             font-size: 14px;
-            letter-spacing: 1px;
-            color: #8c763d;
-            margin-bottom: 10px;
-        }
-
-        .info-block p {
-            font-size: 14px;
-            color: #444444;
-        }
-
-        /* Map Button */
-        .btn-maps {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #8c763d;
+            font-weight: 600;
             color: #ffffff;
-            text-decoration: none;
-            font-size: 13px;
-            border-radius: 25px;
-            letter-spacing: 1px;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-            margin-top: 10px;
-            box-shadow: 0 4px 6px rgba(140, 118, 61, 0.2);
         }
 
-        .btn-maps:hover {
-            background-color: #736031;
+        .profile-card p.parents {
+            font-size: 12px;
+            color: #999999;
+            margin-top: 5px;
         }
 
-        /* Wedding Gift Section */
-        .gift-section {
-            padding: 50px 30px;
+        .ampersand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 40px;
+            color: #b09b67;
+            margin: 15px 0;
+        }
+
+        /* Form Konfirmasi Kehadiran (RSVP) Sesuai Gambar */
+        .rsvp-section {
+            padding: 50px 24px;
             text-align: center;
-            background-color: #faf8f5;
-            border-top: 1px solid #eee;
+        }
+
+        .rsvp-section .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            letter-spacing: 1.5px;
+            color: #b09b67;
+            margin-bottom: 20px;
+        }
+
+        .rsvp-desc {
+            font-size: 13.5px;
+            color: #8c8c8c;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+
+        .rsvp-card {
+            background-color: #22211f;
+            padding: 25px 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #cccccc;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #444444;
+            border-radius: 8px;
+            background-color: #444444;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            color: #ffffff;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        /* Indikator dropdown kustom ringkas */
+        .form-group select {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path fill='%23aaa' d='M0 3l5 5 5-5z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 30px;
+        }
+
+        .form-group input::placeholder {
+            color: #888888;
+        }
+
+        .btn-whatsapp {
+            display: block;
+            width: auto;
+            margin: 10px auto 5px auto;
+            padding: 12px 35px;
+            background-color: #947c4f;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        /* Bagian Kado Digital */
+        .gift-section {
+            padding: 50px 24px;
+            text-align: center;
         }
 
         .gift-card {
-            background-color: #ffffff;
+            background-color: #22211f;
             padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #ebdcb9;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
             margin-top: 20px;
         }
 
-        .bank-name {
-            font-family: 'Cinzel', serif;
-            font-size: 18px;
-            font-weight: bold;
-            color: #0066ae; /* BCA Brand color accent safely styled */
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .account-number {
-            font-size: 20px;
-            font-weight: 600;
-            color: #222222;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            user-select: all;
-        }
-
-        .account-name {
-            font-size: 14px;
-            color: #666666;
-            margin-bottom: 15px;
-        }
-
-        .btn-copy {
-            background: none;
-            border: 1px solid #8c763d;
-            color: #8c763d;
-            padding: 6px 15px;
-            border-radius: 15px;
-            font-size: 12px;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            transition: all 0.3s;
-        }
-
-        .btn-copy:hover {
-            background-color: #8c763d;
-            color: #ffffff;
-        }
-
-        /* Footer */
         footer {
-            padding: 40px 20px;
+            padding: 35px 20px;
             text-align: center;
-            background-color: #333333;
-            color: #ffffff;
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
-
-        footer p {
-            opacity: 0.7;
+            background-color: #0a0a0a;
+            color: #555555;
+            font-size: 11px;
         }
     </style>
 </head>
 <body>
 
+    <!-- Cover Pembuka -->
+    <div class="cover-overlay" id="coverScreen">
+        <p class="cover-title-sub">The Wedding Of</p>
+        <h1 class="cover-title">Huda & Shelena</h1>
+        <p style="font-size: 13px; color: #888888; margin-bottom: 5px;">Kepada Yth.</p>
+        <p style="font-size: 15px; font-weight: 500; color: #dddddd; margin-bottom: 25px;">Bapak/Ibu/Saudara/i</p>
+        <button class="btn-open" onclick="openInvitation()">Buka Undangan</button>
+    </div>
+
+    <!-- Pemutar Audio Musik -->
+    <audio id="weddingMusic" loop>
+        <source src="https://youtu.be/viW0M5R2BLo?si=KmJ1R_5go8OLSShZ" type="audio/mp3">
+    </audio>
+
+    <button class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">🎵</button>
+
     <div class="container">
         
-        <!-- Hero Section -->
         <section class="hero">
             <h3>The Wedding Of</h3>
             <h1>Huda & Shelena</h1>
-            <p class="date">26 Juni 2026</p>
+            <p style="font-size: 13px; color: #888888; letter-spacing: 1px;">26 Juni 2026</p>
         </section>
 
-        <!-- Couple Section -->
+        <!-- Bagian Pembuka Ayat -->
+        <section class="quran-section">
+            <h3>Assalamu’alaikum Wr. Wb.</h3>
+            <p style="font-size: 13px; color: #a0a0a0; margin-bottom: 25px; padding: 0 10px;">Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami.</p>
+            <p class="quran-text">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."</p>
+            <p class="quran-verse">(QS. Ar-Rum: 21)</p>
+        </section>
+
+        <!-- Bagian Mempelai -->
         <section class="couple-section">
-            <p class="intro">Melalui pesan ini, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:</p>
-            
-            <!-- Groom -->
+            <h3 class="section-title">Mempelai</h3>
             <div class="profile-card">
                 <h2>Miftahul Huda</h2>
                 <p class="fullname">Miftahul Huda</p>
                 <p class="parents">Anak pertama dari Bapak Suroso<br>& Ibu Rohmatul Chasanah</p>
             </div>
-
             <div class="ampersand">&</div>
-
-            <!-- Bride -->
             <div class="profile-card">
                 <h2>Shelena Febriani</h2>
                 <p class="fullname">Shelena Febriani</p>
@@ -285,58 +360,97 @@
             </div>
         </section>
 
-        <!-- Event Section -->
-        <section class="event-section">
-            <h3 class="section-title">Waktu & Tempat Acara</h3>
+        <!-- Bagian RSVP Persis Seperti Gambar Google Browser -->
+        <section class="rsvp-section">
+            <h3 class="section-title">Konfirmasi Kehadiran (RSVP)</h3>
+            <p class="rsvp-desc">Mohon konfirmasikan kehadiran Anda melalui form di bawah ini:</p>
             
-            <div class="info-block">
-                <h4>Tanggal</h4>
-                <p>Jumat, 26 Juni 2026</p>
-            </div>
-
-            <div class="info-block">
-                <h4>Jam</h4>
-                <p>13.00 WITA - Selesai</p>
-            </div>
-
-            <div class="info-block">
-                <h4>Lokasi Acara</h4>
-                <p>Jl. Pangeran Suryanata, Perum Bukit Pinang, Blok C1 No. 52</p>
-                <br>
-                <a href="https://maps.google.com/?q=Perum+Bukit+Pinang+Blok+C1+No+52" target="_blank" class="btn-maps">Buka Google Maps</a>
+            <div class="rsvp-card">
+                <div class="form-group">
+                    <label for="rsvpName">Nama Lengkap</label>
+                    <input type="text" id="rsvpName" placeholder="Masukkan nama Anda" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rsvpStatus">Konfirmasi Kehadiran</label>
+                    <select id="rsvpStatus">
+                        <option value="">-- Pilih Status --</option>
+                        <option value="Hadir">Hadir</option>
+                        <option value="Tidak Hadir">Tidak Hadir</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rsvpGuests">Jumlah Tamu</label>
+                    <select id="rsvpGuests">
+                        <option value="1 Orang">1 Orang</option>
+                        <option value="2 Orang">2 Orang</option>
+                        <option value="3 Orang">3 Orang</option>
+                        <option value="4 Orang">4 Orang</option>
+                    </select>
+                </div>
+                
+                <button class="btn-whatsapp" onclick="sendRSVP()">Kirim via WhatsApp</button>
             </div>
         </section>
 
-        <!-- Gift Section -->
+        <!-- Bagian Kado Digital Sesuai Gambar Bawah -->
         <section class="gift-section">
-            <h3 class="section-title">Wedding Gift</h3>
-            <p style="font-size: 13px; color: #666666;">Bagi keluarga dan kerabat yang ingin memberikan tanda kasih, dapat melalui rekening berikut:</p>
-            
+            <h3 class="section-title">Kado Digital</h3>
+            <p style="font-size: 13px; color: #8c8c8c; margin-bottom: 15px;">Bagi keluarga dan kerabat yang ingin memberikan tanda kasih, dapat mengirimkannya melalui rekening di bawah ini:</p>
             <div class="gift-card">
-                <div class="bank-name">BCA</div>
-                <div class="account-number" id="accNum">6595314252</div>
-                <div class="account-name">A/N Pernikahan Huda & Shelena</div>
-                <button class="btn-copy" onclick="copyToClipboard()">Salin No. Rekening</button>
+                <div style="font-weight: bold; color: #b09b67; font-size: 16px; letter-spacing: 1px;">BANK BCA</div>
+                <div id="accNum" style="font-size: 22px; font-weight: 600; color: #ffffff; margin: 8px 0; letter-spacing: 1px;">6595314252</div>
+                <div style="font-size: 13px; color: #888888; margin-bottom: 15px;">A/N Pernikahan Huda & Shelena</div>
+                <button onclick="copyToClipboard()" style="background: none; border: 1px solid #947c4f; color: #b09b67; padding: 6px 18px; border-radius: 20px; cursor: pointer; font-size: 12px;">Salin No. Rekening</button>
             </div>
         </section>
 
-        <!-- Footer -->
         <footer>
-            <p>&copy; 2026 Huda & Shelena Wedding. All Rights Reserved.</p>
+            <p>© 2026 Huda & Shelena Wedding. All Rights Reserved.</p>
         </footer>
 
     </div>
 
     <script>
+        var music = document.getElementById("weddingMusic");
+        var musicBtn = document.getElementById("musicBtn");
+
+        function openInvitation() {
+            document.body.style.overflow = "auto";
+            document.getElementById("coverScreen").classList.add("fade-out");
+            music.play().catch(function(e){ console.log("Playback blocked", e); });
+            musicBtn.style.display = "flex";
+        }
+
+        function toggleMusic() {
+            if (music.paused) { music.play(); musicBtn.innerText = "🎵"; } 
+            else { music.pause(); musicBtn.innerText = "🔇"; }
+        }
+
         function copyToClipboard() {
             var text = document.getElementById("accNum").innerText;
-            navigator.clipboard.writeText(text).then(function() {
-                alert("Nomor rekening berhasil disalin!");
-            }, function(err) {
-                alert("Gagal menyalin nomor rekening.");
-            });
+            navigator.clipboard.writeText(text).then(function() { alert("Nomor rekening berhasil disalin!"); });
+        }
+
+        function sendRSVP() {
+            var name = document.getElementById("rsvpName").value;
+            var status = document.getElementById("rsvpStatus").value;
+            var guests = document.getElementById("rsvpGuests").value;
+            
+            if(!name || !status) {
+                alert("Mohon isi Nama Lengkap dan Status Kehadiran terlebih dahulu.");
+                return;
+            }
+            
+            var phoneNumber = "628123456789"; // Ganti dengan nomor penerima panitia/mempelai
+            var message = "Halo, saya ingin mengonfirmasi kehadiran untuk pernikahan Huda %26 Shelena.%0A%0A" +
+                          "*Nama:* " + encodeURIComponent(name) + "%0A" +
+                          "*Status Kehadiran:* " + encodeURIComponent(status) + "%0A" +
+                          "*Jumlah Tamu:* " + encodeURIComponent(guests);
+            
+            window.open("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message, "_blank");
         }
     </script>
-
 </body>
 </html>
