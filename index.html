@@ -203,7 +203,7 @@
             margin: 15px 0;
         }
 
-        /* Form Konfirmasi Kehadiran (RSVP) Sesuai Gambar */
+        /* Form Konfirmasi Kehadiran (RSVP) */
         .rsvp-section {
             padding: 50px 24px;
             text-align: center;
@@ -258,7 +258,6 @@
             -webkit-appearance: none;
         }
 
-        /* Indikator dropdown kustom ringkas */
         .form-group select {
             background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path fill='%23aaa' d='M0 3l5 5 5-5z'/></svg>");
             background-repeat: no-repeat;
@@ -312,7 +311,6 @@
 </head>
 <body>
 
-    <!-- Cover Pembuka -->
     <div class="cover-overlay" id="coverScreen">
         <p class="cover-title-sub">The Wedding Of</p>
         <h1 class="cover-title">Huda & Shelena</h1>
@@ -321,9 +319,8 @@
         <button class="btn-open" onclick="openInvitation()">Buka Undangan</button>
     </div>
 
-    <!-- Pemutar Audio Musik -->
-    <audio id="weddingMusic" loop>
-        <source src="https://youtu.be/viW0M5R2BLo?si=KmJ1R_5go8OLSShZ" type="audio/mp3">
+    <audio id="weddingMusic" loop preload="auto">
+        <source src="akad.mp3" type="audio/mp3">
     </audio>
 
     <button class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">🎵</button>
@@ -333,124 +330,4 @@
         <section class="hero">
             <h3>The Wedding Of</h3>
             <h1>Huda & Shelena</h1>
-            <p style="font-size: 13px; color: #888888; letter-spacing: 1px;">26 Juni 2026</p>
-        </section>
-
-        <!-- Bagian Pembuka Ayat -->
-        <section class="quran-section">
-            <h3>Assalamu’alaikum Wr. Wb.</h3>
-            <p style="font-size: 13px; color: #a0a0a0; margin-bottom: 25px; padding: 0 10px;">Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami.</p>
-            <p class="quran-text">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."</p>
-            <p class="quran-verse">(QS. Ar-Rum: 21)</p>
-        </section>
-
-        <!-- Bagian Mempelai -->
-        <section class="couple-section">
-            <h3 class="section-title">Mempelai</h3>
-            <div class="profile-card">
-                <h2>Miftahul Huda</h2>
-                <p class="fullname">Miftahul Huda</p>
-                <p class="parents">Anak pertama dari Bapak Suroso<br>& Ibu Rohmatul Chasanah</p>
-            </div>
-            <div class="ampersand">&</div>
-            <div class="profile-card">
-                <h2>Shelena Febriani</h2>
-                <p class="fullname">Shelena Febriani</p>
-                <p class="parents">Anak pertama dari Bapak Alexia Filemon<br>& Ibu Purnama Wati</p>
-            </div>
-        </section>
-
-        <!-- Bagian RSVP Persis Seperti Gambar Google Browser -->
-        <section class="rsvp-section">
-            <h3 class="section-title">Konfirmasi Kehadiran (RSVP)</h3>
-            <p class="rsvp-desc">Mohon konfirmasikan kehadiran Anda melalui form di bawah ini:</p>
-            
-            <div class="rsvp-card">
-                <div class="form-group">
-                    <label for="rsvpName">Nama Lengkap</label>
-                    <input type="text" id="rsvpName" placeholder="Masukkan nama Anda" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="rsvpStatus">Konfirmasi Kehadiran</label>
-                    <select id="rsvpStatus">
-                        <option value="">-- Pilih Status --</option>
-                        <option value="Hadir">Hadir</option>
-                        <option value="Tidak Hadir">Tidak Hadir</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="rsvpGuests">Jumlah Tamu</label>
-                    <select id="rsvpGuests">
-                        <option value="1 Orang">1 Orang</option>
-                        <option value="2 Orang">2 Orang</option>
-                        <option value="3 Orang">3 Orang</option>
-                        <option value="4 Orang">4 Orang</option>
-                    </select>
-                </div>
-                
-                <button class="btn-whatsapp" onclick="sendRSVP()">Kirim via WhatsApp</button>
-            </div>
-        </section>
-
-        <!-- Bagian Kado Digital Sesuai Gambar Bawah -->
-        <section class="gift-section">
-            <h3 class="section-title">Kado Digital</h3>
-            <p style="font-size: 13px; color: #8c8c8c; margin-bottom: 15px;">Bagi keluarga dan kerabat yang ingin memberikan tanda kasih, dapat mengirimkannya melalui rekening di bawah ini:</p>
-            <div class="gift-card">
-                <div style="font-weight: bold; color: #b09b67; font-size: 16px; letter-spacing: 1px;">BANK BCA</div>
-                <div id="accNum" style="font-size: 22px; font-weight: 600; color: #ffffff; margin: 8px 0; letter-spacing: 1px;">6595314252</div>
-                <div style="font-size: 13px; color: #888888; margin-bottom: 15px;">A/N Pernikahan Huda & Shelena</div>
-                <button onclick="copyToClipboard()" style="background: none; border: 1px solid #947c4f; color: #b09b67; padding: 6px 18px; border-radius: 20px; cursor: pointer; font-size: 12px;">Salin No. Rekening</button>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2026 Huda & Shelena Wedding. All Rights Reserved.</p>
-        </footer>
-
-    </div>
-
-    <script>
-        var music = document.getElementById("weddingMusic");
-        var musicBtn = document.getElementById("musicBtn");
-
-        function openInvitation() {
-            document.body.style.overflow = "auto";
-            document.getElementById("coverScreen").classList.add("fade-out");
-            music.play().catch(function(e){ console.log("Playback blocked", e); });
-            musicBtn.style.display = "flex";
-        }
-
-        function toggleMusic() {
-            if (music.paused) { music.play(); musicBtn.innerText = "🎵"; } 
-            else { music.pause(); musicBtn.innerText = "🔇"; }
-        }
-
-        function copyToClipboard() {
-            var text = document.getElementById("accNum").innerText;
-            navigator.clipboard.writeText(text).then(function() { alert("Nomor rekening berhasil disalin!"); });
-        }
-
-        function sendRSVP() {
-            var name = document.getElementById("rsvpName").value;
-            var status = document.getElementById("rsvpStatus").value;
-            var guests = document.getElementById("rsvpGuests").value;
-            
-            if(!name || !status) {
-                alert("Mohon isi Nama Lengkap dan Status Kehadiran terlebih dahulu.");
-                return;
-            }
-            
-            var phoneNumber = "628123456789"; // Ganti dengan nomor penerima panitia/mempelai
-            var message = "Halo, saya ingin mengonfirmasi kehadiran untuk pernikahan Huda %26 Shelena.%0A%0A" +
-                          "*Nama:* " + encodeURIComponent(name) + "%0A" +
-                          "*Status Kehadiran:* " + encodeURIComponent(status) + "%0A" +
-                          "*Jumlah Tamu:* " + encodeURIComponent(guests);
-            
-            window.open("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message, "_blank");
-        }
-    </script>
-</body>
-</html>
+            <p style="font-size: 13px; color: #888888
